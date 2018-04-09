@@ -1,26 +1,25 @@
 {
-  "name": "html5-game",
-  "version": "1.0.0",
-  "main": "main.js",
+  "private": true,
+  "name": "pop-ex",
+  "version": "0.0.1",
+  "description": "MomPop game example",
+  "main": "src/main.js",
   "scripts": {
-    "start": "budo src/main.js"
+    "start": "budo src/main.js:bundle.js --live -- -t [ babelify --presets [ env ] ]",
+    "build": "browserify src/main.js -o bundle.js -t [ babelify --presets [ env ] ]"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [],
+  "author": "Mr Speaker",
+  "license": "MIT",
+  "dependencies": {
+    "easystarjs": "^0.4.3"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
-    "budo": "^11.2.0"
-  },
-  "dependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WendyKKelly/trump-v-peace-game.git"
-  },
-  "bugs": {
-    "url": "https://github.com/WendyKKelly/trump-v-peace-game/issues"
-  },
-  "homepage": "https://github.com/WendyKKelly/trump-v-peace-game#readme",
-  "description": ""
+    "browserify": "^15.2.0",
+    "budo": "^11.2.0",
+    "eslint": "^4.16.0"
+  }
 }
