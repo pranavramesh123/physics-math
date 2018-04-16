@@ -24,7 +24,7 @@ class Bat extends TileSprite {
     this.target = target;
     this.waypoint = null;
 
-    this.state = new State(states.ATTACK);
+    this.state = new State(states.EVADE);
   }
 
   update(dt, t) {

@@ -1,7 +1,12 @@
+
 import pop from "../pop/index.js";
 const { Game, KeyControls } = pop;
 import GameScreen from "./GameScreen.js";
 
-const game = new Game(48 * 19, 48 * 11);
-game.scene = new GameScreen(game, new KeyControls());
+const game = new Game(800, 150);
+const keys = new KeyControls();
+function startGame() {
+  game.scene = new GameScreen(game, keys, startGame);
+}
+startGame();
 game.run();

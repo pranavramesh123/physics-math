@@ -7,7 +7,7 @@ const texture = new Texture("res/images/bravedigger-tiles.png");
 class Totem extends TileSprite {
   constructor(target, onFire) {
     super(texture, 48, 48);
-    this.frame.x = 0;
+    this.frame.x = 2;
     this.frame.y = 1;
     this.target = target;
     this.onFire = onFire;
@@ -17,13 +17,12 @@ class Totem extends TileSprite {
 
   update(dt, t) {
     const { state, frame, target } = this;
-
     let distance;
     switch (state.get()) {
       case "IDLE":
         distance = entity.distance(target, this);
-        frame.x = distance < 300 ? 1 : 2;
-        if (distance < 300 && math.randOneIn(200)) {
+        frame.x = distance < 180 ? 1 : 2;
+        if (distance < 180 && math.randOneIn(250)) {
           state.set("WINDUP");
         }
         break;
@@ -47,9 +46,10 @@ class Totem extends TileSprite {
     const x = Math.cos(angle);
     const y = Math.sin(angle);
 
-    const bullet = new Bullet({ x, y }, 300);
+    const bullet = new Bullet({ x, y });
     bullet.pos.x = totemPos.x - bullet.w / 2;
     bullet.pos.y = totemPos.y - bullet.h / 2;
+    bullet.speed = 300;
 
     onFire(bullet);
   }

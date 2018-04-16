@@ -1,18 +1,19 @@
 import math from "./math.js";
 import Rect from "../Rect.js";
 
-function addDebug(e) {
-  e.children = e.children || [];
-  const bb = new Rect(e.w, e.h, { fill: "rgba(255, 0, 0, 0.3)" });
-  e.children.push(bb);
-  if (e.hitBox) {
-    const { x, y, w, h } = e.hitBox;
+function addDebug(entity) {
+  entity.children = entity.children || [];
+  entity.children.push(
+    new Rect(entity.w, entity.h, { fill: "rgba(255, 0, 0, 0.3)" })
+  );
+  if (entity.hitBox) {
+    const { x, y, w, h } = entity.hitBox;
     const hb = new Rect(w, h, { fill: "rgba(255, 0, 0, 0.5)" });
     hb.pos.x = x;
     hb.pos.y = y;
-    e.children.push(hb);
+    entity.children.push(hb);
   }
-  return e;
+  return entity;
 }
 
 function angle(a, b) {
